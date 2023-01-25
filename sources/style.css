@@ -1,0 +1,43 @@
+.container {
+  padding: 20px 30px;
+  margin: 20px auto;
+  max-width: 800px;
+  background-color: rgb(190, 204, 248);
+  border-radius: 10px;
+}
+form {
+  position: relative;
+  top: 50px;
+}
+h1 {
+  position: relative;
+  top: 70px;
+  font-family: "Amatic SC", cursive;
+  font-size: 80px;
+}
+li {
+  list-style: none;
+}
+.date {
+  position: relative;
+  top: 80px;
+  left: -25px;
+}
+.weather {
+  position: relative;
+  top: -50px;
+}
+.sun {
+  font-size: 70px;
+}
+.temperature {
+  font-size: 50px;
+}
+.card {
+  border: 2px solid white;
+  border-radius: 5px;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 120%;
+}
