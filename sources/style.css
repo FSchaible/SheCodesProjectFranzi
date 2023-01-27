@@ -41,3 +41,7 @@ li {
   height: 100%;
   width: 120%;
 }
+.sourceCode {
+  display: table;
+  margin: 0 auto;
+}

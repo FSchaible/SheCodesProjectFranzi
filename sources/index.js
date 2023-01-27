@@ -1,4 +1,3 @@
-alert("bka");
 let timeElement = document.querySelector("#time");
 let now = new Date();
 let hour = now.getHours();
