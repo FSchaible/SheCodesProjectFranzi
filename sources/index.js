@@ -24,6 +24,7 @@ let day = days[now.getDay()];
 todayElement.innerHTML = `${day}`;
 
 function displayWeatherCondition(response) {
+  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.main.temp
@@ -34,6 +35,8 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  document.querySelector("#description").innerHTML =
+    response.data.weather[0].description;
   document
     .querySelector("#icon")
     .setAttribute(
