@@ -27,11 +27,15 @@ li {
   position: relative;
   top: -50px;
 }
-.sun {
+.icon {
   font-size: 70px;
 }
 .temperature {
   font-size: 50px;
+}
+.units {
+  position: relative;
+  top: -24px;
 }
 .card {
   border: 2px solid white;
