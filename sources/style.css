@@ -49,3 +49,8 @@ li {
   display: table;
   margin: 0 auto;
 }
+.weather .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
