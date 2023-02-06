@@ -33,7 +33,6 @@ li {
 .temperature {
   font-size: 50px;
 }
-
 .units {
   position: relative;
   top: -24px;
@@ -54,4 +53,14 @@ li {
   color: black;
   cursor: default;
   text-decoration: none;
+}
+.weather-forecast {
+  margin-top: 20px;
+  text-align: center;
+}
+.weather-forecast-date {
+  font-size: 16px;
+}
+.weather-forecast-temperature-min {
+  opacity: 0.6;
 }
