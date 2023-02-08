@@ -23,33 +23,51 @@ let days = [
 let day = days[now.getDay()];
 todayElement.innerHTML = `${day}`;
 
-function displayForecast() {
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
+function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
-  let days = ["Thursday", "Friday", "Saturday", "Sunday"];
   let forecastHTML = `<div class="row">`;
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      ` <div class="col-2">
-            <div class="weather-forecast-date">${day}</div>
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        ` <div class="col-2">
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
             <img
-              src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
+              src= "http://openweathermap.org/img/wn/${
+                forecastDay.weather[0].icon
+              }@2x.png"
               alt=""
               width="42"
             />
             <div class="weather-forecast-temperature">
-              <span class="weather-forecast-temperature-max">15</span>°
-              <span class="weather-forecast-temperature-min">8</span>°
+              <span class="weather-forecast-temperature-max"> ${Math.round(
+                forecastDay.temp.max
+              )}°</span>
+              <span class="weather-forecast-temperature-min"> ${Math.round(
+                forecastDay.temp.min
+              )}°</span>
             </div>
           </div>`;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
+
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "d1a86552de255334f6117b348c4519bd";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast/daily?lat=${coordinates.lat}&lon=${coordinates.lon}&cnt={cnt}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
 }
 
@@ -108,4 +126,4 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
-displayForecast();
+search("Stuttgart");
