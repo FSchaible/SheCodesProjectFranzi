@@ -94,13 +94,17 @@ function displayWeatherCondition(response) {
   getForecast(response.data.coord);
 }
 
-function handleSubmit(event) {
-  event.preventDefault();
-  let city = document.querySelector("#cityInput").value;
+function search(city) {
   let apiKey = "d1a86552de255334f6117b348c4519bd";
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(displayWeatherCondition);
+}
+
+function handleSubmit(event) {
+  event.preventDefault();
+  let city = document.querySelector("#cityInput");
+  search(city.value);
 }
 let searchForm = document.querySelector("#cityForm");
 searchForm.addEventListener("submit", handleSubmit);
@@ -126,4 +130,5 @@ let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
 celsiusLink.addEventListener("click", convertToCelsius);
+
 search("Stuttgart");
